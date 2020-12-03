@@ -1,0 +1,261 @@
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ *
+ * =========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+@import "/home/apoema/.config/colors/gtk3";
+
+@keyframes blink-warning {
+  70% {
+    color: @base05;
+  }
+
+  to {
+    color: @urgent;
+    background-color: @base00;
+  }
+}
+
+@keyframes blink-critical {
+  70% {
+    color: @base05;
+  }
+
+  to {
+    color: @base00;
+    background-color: @urgent;
+  }
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* The whole bar */
+#waybar {
+  background: @base00;
+  /*background: transparent;*/
+  color: @base05;
+  font-family: Cantarell, Noto Sans, sans-serif;
+  font-size: 20px;
+}
+
+/* Each module */
+#battery,
+#clock,
+#cpu,
+#custom-keyboard-layout,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#idle_inhibitor,
+#custom-weather,
+#custom-mydayage,
+#tray {
+  padding: 10px;
+  background: @base00;
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+
+#battery {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.warning {
+  color: @base09;
+}
+
+#battery.critical {
+  color: @urgent;
+}
+
+#battery.warning.discharging {
+  animation-name: blink-warning;
+  animation-duration: 3s;
+}
+
+#battery.critical.discharging {
+  animation-name: blink-critical;
+  animation-duration: 2s;
+}
+
+#custom-weather.t9 {
+  color: #AF3504;
+}
+
+#custom-weather.t8 {
+  color: #D6632F;
+}
+
+#custom-weather.t7 {
+  color: #FC905A;
+}
+
+#custom-weather.t6 {
+  color: #FEBA98;
+}
+
+#custom-weather.t5 {
+  color: #FFE3D6;
+}
+
+#custom-weather.t4 {
+  color: #E2F6F8;
+}
+
+#custom-weather.t3 {
+  color: #C2ECF0;
+}
+
+#custom-weather.t2 {
+  color: #A1E2E8;
+}
+
+#custom-weather.t1 {
+  color: #81D7DF;
+}
+
+#custom-weather.t0 {
+  color: #5CCCD6;
+}
+
+#custom-weather.Temp {
+  padding-bottom:0px;
+  font-size:16px;
+}
+
+
+#clock.time {
+  padding-top:0px;
+  font-weight: bold;
+}
+
+#clock.date {
+  padding-bottom:0px;
+  font-size:11px
+}
+
+#cpu {
+  /* No styles */
+}
+
+#cpu.warning {
+  color: @base09;
+}
+
+#cpu.critical {
+  color: @urgent;
+}
+
+#memory {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#memory.warning {
+  color: @base09;
+}
+
+#memory.critical {
+  color: @urgent;
+  animation-name: blink-critical;
+  animation-duration: 2s;
+}
+
+#mode {
+  font-size: 13px;
+  background: @base05;
+  border-top: 2px solid @base06;
+  color: @base00;
+  /* To compensate for the top border and still have vertical centering */
+  padding-bottom: 2px;
+}
+
+#network {
+  /* No styles */
+}
+
+#network.disconnected {
+  color: @base05;
+}
+
+#pulseaudio {
+  /* No styles */
+}
+
+#pulseaudio.muted {
+  /* No styles */
+}
+
+#custom-spotify {
+  color: rgb(102, 220, 105);
+}
+
+#temperature {
+  /* No styles */
+}
+
+#temperature.critical {
+  color: @urgent;
+}
+
+#tray {
+  /* No styles */
+}
+
+#window {
+  font-size: 13px;
+  font-weight: bold;
+  text-shadow: -1px 0 @base00, 0 1px @base00, 1px 0 @base00, 0 -1px @base00;
+}
+
+#workspaces button {
+  border-left: 3px solid transparent;
+  /* To compensate for the top border and still have vertical centering */
+  padding: 10px;
+  color: @base05;
+  background-color: @base00;
+}
+
+#workspaces button.focused {
+  border-color: @focused_fg;
+  color: @focused_fg;
+  background-color: @focused;
+}
+
+#workspaces button:prelight {
+  background-color: @base06;
+  color: @base06;
+}
+
+#workspaces button.urgent {
+  border-color: @urgent;
+  color: @urgent;
+}
